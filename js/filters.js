@@ -24,11 +24,23 @@ app.filter('camel', function () {
 });
 
 app.filter('pigLatin', function () {
-  var vowels = ['a', 'e', 'i', 'o', 'u'];
   return function (input) {
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
     input = input.split(" ");
-    input.map(function (word) {
-      
-    })
+    var pigInput = input.map(function (word) {
+      for (var i = 0; i < word.length; i++) {
+        if (vowels.indexOf(word[i]) > -1) {
+          return word.slice(i) + "-" + word.slice(0, i) +'ay';
+        }
+      }
+    });
+    return pigInput.join(" ");
+  };
+});
+
+app.filter('redact', function () {
+  return function(input, wordToReplace){
+      input = input.replace(wordToReplace, 'REDACTED');
+      return input;
   };
 });

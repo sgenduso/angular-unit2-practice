@@ -1,5 +1,27 @@
-app.controller('HomeController', function ($scope) {
+app.controller('HomeController', function ($scope, $http) {
   $scope.message ='yo_yo_yo';
+  $scope.pig = 'whiskey ginger';
+  $scope.forRedaction = 'my dog rusty is 2 dorables';
+  $http.get('https://api.github.com/zen').then(function (data) {
+    $scope.zenData = data.data;
+  });
+  $http.get('js/itunes.json').then(function (data) {
+    $scope.response = data.data.results;
+  }, function (err) {
+    $scope.response = 'invalid url';
+  });
+  $http.get('https://shielded-peak-6345.herokuapp.com/messages').then(function (data) {
+    $scope.posts = data.data;
+  });
+  $scope.addMessage = function () {
+    $http.post('https://shielded-peak-6345.herokuapp.com/messages',
+    {
+    name: $scope.messageName,
+    content: $scope.messageContent
+  }).then(function (response) {
+    console.log(response);
+  });
+};
 });
 
 
