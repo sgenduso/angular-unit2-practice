@@ -26,9 +26,17 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'partials/add.html',
         controller: 'AddController'
       })
-      .when('/:path', {
-        redirectTo: ('/#/:path')
+      .when('/directives', {
+        templateUrl: 'partials/directives.html',
+        controller: 'CustomDirectivesController'
       })
+      .when('/pokemon', {
+        templateUrl: 'partials/pokemon.html',
+        controller: 'PokemonController'
+      })
+      // .when('/:path', {
+      //   redirectTo: ('/#/:path')
+      // })
       // .when('/add/:querystring', {
       //   templateUrl: 'partials/add.html',
       //   controller: 'AddController'

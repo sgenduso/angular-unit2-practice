@@ -51,7 +51,12 @@ app.controller('AddController', function ($scope, $routeParams, $location) {
     }
 });
 
-// app.controller('AddController', function ($scope, $routeParams, $location) {
-//   console.log($routeParams);
-//   console.log($location.search().x);
-// });
+app.controller('CustomDirectivesController', function ($scope) {
+
+});
+
+app.controller('YoyoController', ['$scope', function($scope) {
+  $scope.yoyo = {name: 'Duncan Metal Drifter',
+    img: "http://www.toysrus.com/graphics/tru_prod_images/Duncan-Metal-Drifter-Pro-Yo-Yo--pTRU1-8444206dt.jpg"
+  };
+}]);
