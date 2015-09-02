@@ -60,3 +60,22 @@ app.controller('YoyoController', ['$scope', function($scope) {
     img: "http://www.toysrus.com/graphics/tru_prod_images/Duncan-Metal-Drifter-Pro-Yo-Yo--pTRU1-8444206dt.jpg"
   };
 }]);
+
+app.controller('PokemonController', ['$scope', '$http', function ($scope, $http) {
+  $http.get('http://pokeapi.co/api/v1/pokedex/1/')
+  .then(function (response) {
+    $scope.pokemonToDisplay = [];
+    var pokemon = response.data.pokemon;
+    for (var i = 0; i < 5; i++) {
+      var randomIndex = Math.floor(Math.random() * pokemon.length);
+      $http.get('http://pokeapi.co/' + pokemon[randomIndex].resource_uri)
+      .then(function (singlePokemon) {
+        $http.get('http://pokeapi.co/'+singlePokemon.data.sprites[0].resource_uri)
+        .then(function (sprite) {
+          singlePokemon.imgUrl = 'http://pokeapi.co' + sprite.data.image;
+        $scope.pokemonToDisplay.push(singlePokemon);
+        });
+      });
+    }
+  });
+}]);

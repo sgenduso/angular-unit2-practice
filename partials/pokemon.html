@@ -1,0 +1,15 @@
+<h3>GOTTA CATCH EM ALL!</h3>
+
+<div ng-repeat='pokemon in pokemonToDisplay'>
+<p class='poke-name'>{{pokemon.data.name}}</p>
+<p>Types:</p>
+<ul>
+  <li ng-repeat='type in pokemon.data.types'>{{type.name}}</li>
+</ul>
+<p>Moves:</p>
+<ul>
+  <li ng-repeat='move in pokemon.data.moves | limitTo: 6'>{{move.name}}</li>
+</ul>
+<img src='{{pokemon.imgUrl}}' alt='{{pokemon.imgUrl}}'>
+
+</div>

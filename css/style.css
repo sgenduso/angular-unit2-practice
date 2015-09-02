@@ -1,0 +1,9 @@
+body {
+  padding: 20px;
+}
+
+.poke-name {
+  font-weight: bold;
+  color: blue;
+  font-size: 1.5em;
+}
